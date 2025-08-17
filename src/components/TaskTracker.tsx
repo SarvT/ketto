@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // NOTE: This is a single-file, working starter UI with localStorage persistence
 // and in-browser notifications. It follows the glassmorphism style in your
