@@ -137,7 +137,7 @@ function saveLS<T>(key: string, value: T): void {
 // ------------------------------------------------------------
 // Root Component
 // ------------------------------------------------------------
-export default function GlassTaskTracker(): JSX.Element {
+export default function GlassTaskTracker(): React.JSX.Element {
   useNotificationPermission();
 
   const [tasks, setTasks] = useState<Task[]>(() =>
@@ -376,7 +376,7 @@ export default function GlassTaskTracker(): JSX.Element {
 // ------------------------------------------------------------
 // Subcomponents
 // ------------------------------------------------------------
-function SectionTitle({ children }: { children: React.ReactNode }): JSX.Element {
+function SectionTitle({ children }: { children: React.ReactNode }): React.JSX.Element {
   return (
     <div className="text-sm uppercase tracking-widest text-slate-300/80 pl-1">
       {children}
@@ -384,7 +384,7 @@ function SectionTitle({ children }: { children: React.ReactNode }): JSX.Element 
   );
 }
 
-function Chip({ children }: { children: React.ReactNode }): JSX.Element {
+function Chip({ children }: { children: React.ReactNode }): React.JSX.Element {
   return (
     <span className="inline-flex items-center gap-1 rounded-xl px-2 py-1 text-xs bg-white/10 border border-white/10">
       {children}
@@ -400,7 +400,7 @@ interface TaskRowProps {
   onChannel: (channel: string) => void;
 }
 
-function TaskRow({ task, onDone, onToggle, onRemove, onChannel }: TaskRowProps): JSX.Element {
+function TaskRow({ task, onDone, onToggle, onRemove, onChannel }: TaskRowProps): React.JSX.Element {
   const dueSoon = isDueSoon(task.whenISO, 30);
 
   return (
@@ -469,7 +469,7 @@ function TaskRow({ task, onDone, onToggle, onRemove, onChannel }: TaskRowProps):
   );
 }
 
-function AICoachCard({ suggestion }: { suggestion: string }): JSX.Element {
+function AICoachCard({ suggestion }: { suggestion: string }): React.JSX.Element {
   return (
     <div className="rounded-3xl p-5 bg-white/10 backdrop-blur-xl border border-white/10 shadow-xl shadow-slate-950/30">
       <div className="text-sm uppercase tracking-widest text-slate-300/80 mb-2">AI Coach</div>
@@ -489,7 +489,7 @@ interface WeeklyInsightsProps {
   logs: Log[];
 }
 
-function WeeklyInsights({ tasks, logs }: WeeklyInsightsProps): JSX.Element {
+function WeeklyInsights({ tasks, logs }: WeeklyInsightsProps): React.JSX.Element {
   const todayTasks = tasks.filter((t) => withinToday(t.whenISO));
   const completed = todayTasks.filter((t) => t.done).length;
   const due = todayTasks.length;
@@ -516,7 +516,7 @@ interface StatCardProps {
   note: string;
 }
 
-function StatCard({ label, value, note }: StatCardProps): JSX.Element {
+function StatCard({ label, value, note }: StatCardProps): React.JSX.Element {
   return (
     <div className="rounded-2xl p-4 bg-white/5 border border-white/10 text-center">
       <div className="text-slate-300/80 text-xs uppercase tracking-wider">{label}</div>
@@ -526,7 +526,7 @@ function StatCard({ label, value, note }: StatCardProps): JSX.Element {
   );
 }
 
-function History({ logs }: { logs: Log[] }): JSX.Element {
+function History({ logs }: { logs: Log[] }): React.JSX.Element {
   return (
     <div className="rounded-3xl p-5 bg-white/10 backdrop-blur-xl border border-white/10 shadow-xl shadow-slate-950/30">
       <div className="text-sm uppercase tracking-widest text-slate-300/80 mb-3">Recent Activity</div>
@@ -552,7 +552,7 @@ function History({ logs }: { logs: Log[] }): JSX.Element {
   );
 }
 
-function EmptyState({ onAdd }: { onAdd: () => void }): JSX.Element {
+function EmptyState({ onAdd }: { onAdd: () => void }): React.JSX.Element {
   return (
     <div className="rounded-3xl p-8 bg-white/5 backdrop-blur-xl border border-white/10 text-center">
       <div className="text-xl">No tasks match your filters.</div>
@@ -568,7 +568,7 @@ interface AddTaskModalProps {
   onCreate: (task: Task) => void;
 }
 
-function AddTaskModal({ onClose, onCreate }: AddTaskModalProps): JSX.Element {
+function AddTaskModal({ onClose, onCreate }: AddTaskModalProps): React.JSX.Element {
   const [title, setTitle] = useState<string>("");
   const [category, setCategory] = useState<string>("health");
   const [when, setWhen] = useState<string>(() => new Date().toISOString().slice(0, 16)); // yyyy-mm-ddThh:mm
